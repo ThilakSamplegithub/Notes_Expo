@@ -12,8 +12,9 @@ app.get('/',(req,res)=>{
     res.status(200).send(`Welcome`)
 })
 app.use(cors())
-app.use(authMiddleWare)
+
 app.use('/user',userRouter)
+app.use(authMiddleWare)
 app.use('/notes',notesRouter)
 app.listen(port,async(req,res)=>{
     try{
