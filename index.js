@@ -6,10 +6,12 @@ const {connection}=require('./config/db')
 const {userRouter}=require("./Controllers/user.controller")
 const {authMiddleWare } = require("./Middlewares/auth.middleware")
 const { notesRouter } = require("./Controllers/notes.controller")
+const cors=require('cors')
 const port=process.env.PORT
 app.get('/',(req,res)=>{
     res.status(200).send(`Welcome`)
 })
+app.use(cors())
 app.use(authMiddleWare)
 app.use('/user',userRouter)
 app.use('/notes',notesRouter)
